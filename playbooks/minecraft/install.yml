@@ -8,7 +8,7 @@
         - wget
       state: latest
   - name: "Making directory"
-    shell: "mkdir -p {{app_dir}}/logs"
+    shell: "mkdir -p {{app_dir}}/logs {{app_dir}}/minecraft"
   - name: "Create eula.txt"
     copy:
       dest: "{{app_dir}}/minecraft/eula.txt"

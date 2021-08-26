@@ -1,0 +1,37 @@
+---
+- hosts: localhost
+  tasks:
+  - name: "Install prerequisites."
+    yum:
+      name:
+        - java-1.8.0-openjdk
+        - wget
+      state: latest
+  - name: "Making directory"
+    shell: "mkdir -p {{app_dir}}/logs"
+  - name: "Create eula.txt"
+    copy:
+      dest: "{{app_dir}}/minecraft/eula.txt"
+      content: |
+        eula=true
+  - name: "Create eula.txt"
+    copy:
+      dest: "{{app_dir}}/minecraft/server.properties"
+      content: |
+        server-port=3074
+        rcon.port=8080
+        query.port=3074
+        rcon.password=Crafter9000
+        enable-rcon=true
+        level-name=world
+        motd=Welcome to Storm's Minecraft Server!
+        max-players=20
+        level-seed=2976643220357667859
+  - name: "Downloading minecraft"
+    get_url:
+      url: https://launcher.mojang.com/v1/objects/1b557e7b033b583cd9f66746b7a9ab1ec1673ced/server.jar
+      dest: "{{app_dir}}/minecraft/server.jar"
+      mode: '0750'
+
+
+

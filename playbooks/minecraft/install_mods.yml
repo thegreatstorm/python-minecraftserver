@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  tasks:
+  - name: "Downloading Forge Mod"
+    get_url:
+      url: https://launcher.mojang.com/v1/objects/a16d67e5807f57fc4e550299cf20226194497dc2/server.jar
+      dest: "{{app_dir}}/minecraft/server.jar"
+      mode: '0750'
+  - name: "Installing Forge Mod Installer"
+    shell: "cd {{app_dir}}/minecraft/ && java -jar forge-1.17.1-37.0.95-installer.jar --installServer"

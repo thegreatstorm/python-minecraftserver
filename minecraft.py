@@ -101,11 +101,13 @@ if args.update:
     print("--------------------------------------------------------")
     if game_installed != 'unset':
         playbook_name = "update.yml"
-        playbook = os.path.abspath(os.path.join(prefix_dir, "playbooks/{}/{}".format(current_game, playbook_name)))
-        run_playbook(playbook, game_config)
+        print("Still under maintnance")
+        #playbook = os.path.abspath(os.path.join(prefix_dir, "playbooks/{}/{}".format(current_game, playbook_name)))
+        #run_playbook(playbook, game_config)
     else:
         print("Minecraft not installed.")
         exit(1)
+
 
 if args.stop:
     print("Stopping Minecraft Server")

@@ -3,8 +3,6 @@
   tasks:
   - name: "Downloading Forge Mod"
     get_url:
-      url: https://maven.minecraftforge.net/net/minecraftforge/forge/1.17.1-37.0.95/forge-1.17.1-37.0.95-installer.jar
-      dest: "{{app_dir}}/minecraft/forge-installer.jar"
+      url: https://getbukkit.org/get/92f15442e8a9edea8394b208ac08d667
+      dest: "{{app_dir}}/download/craftbukkit-1.18.2.jar"
       mode: '0750'
-  - name: "Installing Forge Mod Installer"
-    shell: "cd {{app_dir}}/minecraft/ && java -jar forge-installer.jar --installServer"

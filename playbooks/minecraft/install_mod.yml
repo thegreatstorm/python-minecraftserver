@@ -1,8 +1,12 @@
 ---
 - hosts: localhost
   tasks:
-  - name: "Downloading Forge Mod"
+  - name: "Backing up minecraft server.jar"
+    shell: "mv {{app_dir}}/minecraft/server.jar {{app_dir}}/minecraft/server.jar.old"
+  - name: "Downloading CraftBukkit v1.18.2"
     get_url:
       url: https://getbukkit.org/get/92f15442e8a9edea8394b208ac08d667
       dest: "{{app_dir}}/download/craftbukkit-1.18.2.jar"
       mode: '0750'
+  - name: "Installing CraftBukkit v1.18.2"
+    shell: "mv {{app_dir}}/download/craftbukkit-1.18.2.jar.jar {{app_dir}}/minecraft/server.jar"

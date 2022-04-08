@@ -10,5 +10,9 @@ def argument_controller():
     parser.add_argument('--stop', help='Stop Minecraft Server', required=False, action='store_true')
     parser.add_argument('--update', help='Update Minecraft Server', required=False, action='store_true')
     parser.add_argument('--clean', help='Destroys server folder', required=False, action='store_true')
+    parser.add_argument('--rcon', help='Rcon Controller use --rcon_port="" --password="" --command=""', required=False, action='store_true')
+    parser.add_argument('--rcon_port', help='Assigned Rcon Port', required=False, action='store_true')
+    parser.add_argument('--rcon_password', help='Rcon Password', required=False, action='store_true')
+    parser.add_argument('--rcon_command', help='Rcon Command', required=False, action='store_true')
     args = parser.parse_args()
     return args

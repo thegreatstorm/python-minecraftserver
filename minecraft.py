@@ -9,6 +9,7 @@ import json
 # Custom Code
 from bin.utils.argument_controller import argument_controller
 from bin.utils.configuration_controller import config_controller, set_game_config, get_game_config
+from bin.utils.rcon_controller import with_connect
 from bin.server_manager import run_playbook
 from bin.server_manager import find_process
 
@@ -117,6 +118,27 @@ if args.stop:
         playbook_name = "stop.yml"
         playbook = os.path.abspath(os.path.join(prefix_dir, "playbooks/{}/{}".format(current_game, playbook_name)))
         run_playbook(playbook, game_config)
+    else:
+        print("Minecraft not installed.")
+        exit(1)
+
+if args.rcon:
+    print("Connecting to Minecraft Server")
+    print("--------------------------------------------------------")
+    if game_installed != 'unset':
+        if args.rcon_port:
+            if args.rcon_password:
+                if args.rcon_command:
+                    with_connect(rcon_port=args.rcon_port, rcon_password=args.rcon_password, rcon_command=args.rcon_command)
+                else:
+                    print('Command empty. Use --command=""')
+                    exit(1)
+            else:
+                print('Rcon Password empty. Use --rcon_password=""')
+                exit(1)
+        else:
+            print('Rcon Port empty. Use --rcon_port=""')
+            exit(1)
     else:
         print("Minecraft not installed.")
         exit(1)

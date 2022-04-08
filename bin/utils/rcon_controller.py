@@ -10,7 +10,9 @@ def with_connect(rcon_port, rcon_password, rcon_command):
 
 def direct_connect(rcon_port, rcon_password, rcon_command):
     mcr = MCRcon("localhost:" + rcon_port, rcon_command)
+    # connect to minecraft server
     mcr.connect()
     resp = mcr.command(rcon_command)
     print(resp)
+    # connect to minecraft server
     mcr.disconnect()

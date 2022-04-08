@@ -5,7 +5,8 @@ Minecraft Server Automation!
 
 ## Prerequisites
 * Ubuntu 64-bit
-    * `sudo dpkg --add-architecture i386; sudo apt update; sudo apt install ansible wget tar unzip default-jre`
+    * `sudo dpkg --add-architecture i386; sudo apt update; sudo apt install ansible wget tar unzip`
+    * `Download Java and Install Java`
     
     
 ## Install Requirements

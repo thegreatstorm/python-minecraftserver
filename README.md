@@ -2,6 +2,7 @@
 
 # python-minecraft
 Minecraft Server Automation!
+By: TheGreatSt0rm
 
 ## Prerequisites
 * Ubuntu 64-bit
@@ -13,7 +14,6 @@ Minecraft Server Automation!
 * Ansible
 * Python3
 * Git
-* Unzip
 * Java
 
 ## Python modules
@@ -21,10 +21,10 @@ Minecraft Server Automation!
 
 ## Commands
 * `-h, --help`
-    * show this help message and exit
+    * show this help message
     
 ## FAQ
 * Can this run inside a docker container?
-    * Yes I have tested this with centos 8 container and was successful.
+    * Yes I have tested this with Ubuntu 20.04.4 container and was successful.
 * Is this bedrock or java?
     * Java Only

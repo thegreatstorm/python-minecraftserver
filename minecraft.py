@@ -9,7 +9,7 @@ import json
 # Custom Code
 from bin.utils.argument_controller import argument_controller
 from bin.utils.configuration_controller import config_controller, set_game_config, get_game_config
-from bin.utils.rcon_controller import with_connect
+from bin.utils.rcon_controller import connect_mc_rcon
 from bin.server_manager import run_playbook
 from bin.server_manager import find_process
 
@@ -129,7 +129,14 @@ if args.rcon:
         if args.rcon_port:
             if args.rcon_password:
                 if args.rcon_command:
-                    with_connect(rcon_port=args.rcon_port, rcon_password=args.rcon_password, rcon_command=args.rcon_command)
+                    server_info = {}
+                    server_info["hostname"] = "0.0.0.0"
+                    server_info["rcon_port"] = args.rcon_port
+                    server_info["rcon_password"] = args.rcon_password
+                    server_info["message"] = args.rcon_command
+                    server_info["enable_trace"] = False
+                    print("Running Command: {}".format(args.rcon_command))
+                    connect_mc_rcon(server_info)
                 else:
                     print('Command empty. Use --command=""')
                     exit(1)

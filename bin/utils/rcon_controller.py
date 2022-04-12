@@ -1,19 +1,59 @@
-from mcrcon import MCRcon
+import socket
+import unicodedata
+import re
+
+from packet_controller import send_packet, receive_packet, Packet
+"""
+server_info = {}
+server_info["hostname"] = ""
+server_info["rcon_port"] = ""
+server_info["rcon_password"] = ""
+server_info["enable_trace"] = False
+"""
 
 
-def with_connect(rcon_port, rcon_password, rcon_command):
-    print("0.0.0.0:" + rcon_port)
-    with MCRcon("0.0.0.0:" + rcon_port, rcon_command) as mcr:
-        #/whitelist add bob
-        resp = mcr.command(rcon_command)
-        print(resp)
+def login(sock, password):
+    send_packet(sock, Packet(0, 3, password.encode("utf8")))
+    packet = receive_packet(sock)
+    return packet.ident == 0
 
 
-def direct_connect(rcon_port, rcon_password, rcon_command):
-    mcr = MCRcon("0.0.0.0:" + rcon_port, rcon_command)
-    # connect to minecraft server
-    mcr.connect()
-    resp = mcr.command(rcon_command)
-    print(resp)
-    # connect to minecraft server
-    mcr.disconnect()
+def command(sock, text):
+    """
+    Sends a "command" packet to the server. Returns the response as a string.
+    """
+
+    send_packet(sock, Packet(0, 2, text.encode("utf8")))
+    send_packet(sock, Packet(1, 0, b""))
+    response = b""
+    while True:
+        packet = receive_packet(sock)
+        if packet.ident != 0:
+            break
+        response += packet.payload
+    return response
+
+
+def connect_mc_rcon(server_info):
+        try:
+            # Connect
+            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            sock.connect((server_info['hostname'], int(server_info['rcon_port'])))
+            result = login(sock, server_info['rcon_password'])
+            print(result)
+            if not result:
+                print("Incorrect rcon password")
+                return
+
+            # Start looping
+            print("Sending command...")
+            response = command(sock, server_info['message'])
+            conv_response = str(response)
+            conv_response = re.sub(r'\\\w{2}\d\w?', '', conv_response)
+            conv_response = re.sub(r'\\n', '', conv_response)
+            print(conv_response[2:][:-1])
+        except Exception as e:
+            print("Failed to send command: " + str(e))
+            sock.close()
+        finally:
+            sock.close()

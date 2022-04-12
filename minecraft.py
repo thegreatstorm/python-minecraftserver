@@ -63,6 +63,22 @@ if args.start:
         print("Minecraft Server not installed.")
         exit(0)
 
+if args.restart:
+    print("Starting Minecraft Server")
+    print("--------------------------------------------------------")
+    if game_installed != 'unset':
+        playbook_name = "restart.yml"
+        game_config = get_game_config(prefix_dir, game_config, current_game)
+        playbook = os.path.abspath(os.path.join(prefix_dir, "playbooks/{}/{}".format(current_game, playbook_name)))
+        try:
+            run_playbook(playbook, game_config)
+        except Exception as e:
+            print("Started Minecraft Server: {}".format(str(e)))
+            exit(1)
+    else:
+        print("Minecraft Server not installed.")
+        exit(0)
+
 if args.install:
     print("Installing Minecraft Server: {}".format(current_game))
     print("--------------------------------------------------------")

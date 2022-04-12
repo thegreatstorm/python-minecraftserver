@@ -40,13 +40,9 @@ def connect_mc_rcon(server_info):
             sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             sock.connect((server_info['hostname'], int(server_info['rcon_port'])))
             result = login(sock, server_info['rcon_password'])
-            print(result)
             if not result:
                 print("Incorrect rcon password")
                 return
-
-            # Start looping
-            print("Sending command...")
             response = command(sock, server_info['message'])
             conv_response = str(response)
             conv_response = re.sub(r'\\\w{2}\d\w?', '', conv_response)

@@ -8,7 +8,7 @@ def argument_controller():
     parser.add_argument('--install_mod', help='Install Forge Mod Loader', required=False, action='store_true')
     parser.add_argument('--start', help='Run Minecraft Server', required=False, action='store_true')
     parser.add_argument('--stop', help='Stop Minecraft Server', required=False, action='store_true')
-    parser.add_argument('--restart', help='Run Minecraft Server', required=False, action='store_true')
+    parser.add_argument('--restart', help='Restart Minecraft Server', required=False, action='store_true')
     parser.add_argument('--update', help='Update Minecraft Server', required=False, action='store_true')
     parser.add_argument('--clean', help='Destroys server folder', required=False, action='store_true')
     parser.add_argument('--rcon', help='Rcon Controller use --rcon_port="" --password="" --command=""', required=False, action='store_true')

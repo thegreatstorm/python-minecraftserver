@@ -2,7 +2,7 @@ import socket
 import unicodedata
 import re
 
-from packet_controller import send_packet, receive_packet, Packet
+from bin.utils.packet_controller import send_packet, receive_packet, Packet
 """
 server_info = {}
 server_info["hostname"] = ""

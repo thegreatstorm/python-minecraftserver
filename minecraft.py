@@ -64,7 +64,7 @@ if args.start:
         exit(0)
 
 if args.restart:
-    print("Starting Minecraft Server")
+    print("Restarting Minecraft Server")
     print("--------------------------------------------------------")
     if game_installed != 'unset':
         playbook_name = "restart.yml"

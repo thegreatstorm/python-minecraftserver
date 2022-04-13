@@ -100,7 +100,14 @@ if args.install_mod:
     print("Installing Minecraft Server: {}".format(current_game))
     print("--------------------------------------------------------")
     if game_installed != 'unset':
-        playbook_name = "install_mod.yml"
+        playbook_name = ""
+        if args.install_mod == "bukkit":
+            playbook_name = "install_mod_bukkit.yml"
+        elif args.install_mod == "spigotmc":
+            playbook_name = "install_mod_spigotmc.yml"
+        else:
+            print('You forgot to add --install_mod="<bukkit/spigotmc>"')
+            exit(1)
         playbook = os.path.abspath(os.path.join(prefix_dir, "playbooks/{}/{}".format(current_game, playbook_name)))
         try:
             # Copies over the config

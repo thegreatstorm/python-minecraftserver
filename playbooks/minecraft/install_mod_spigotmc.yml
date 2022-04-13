@@ -1,0 +1,16 @@
+---
+- hosts: localhost
+  tasks:
+  - name: "Backing up minecraft server.jar"
+    shell: "mv {{app_dir}}/minecraft/server.jar {{app_dir}}/minecraft/server.jar.old"
+  - name: "Downloading SpigotMC Latest"
+    get_url:
+      url: https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
+      dest: "{{app_dir}}/download/BuildTools.jar"
+      mode: '0750'
+  - name: "Moving SpigotMC Latest"
+    shell: "mv {{app_dir}}/download/BuildTools.jar {{app_dir}}/minecraft/BuildTools.jar"
+  - name: "Installing SpigotMC Latest"
+      shell: "cd {{app_dir}}/minecraft/ && java -jar BuildTools.jar"
+  - name: "Changing SpigotMC Latest"
+      shell: "mv {{app_dir}}/minecraft/spigot-* server.jar"

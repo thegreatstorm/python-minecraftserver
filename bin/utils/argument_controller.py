@@ -5,7 +5,7 @@ def argument_controller():
     # Plugins may have to been done manual has mods are different per game server.
     parser = argparse.ArgumentParser('Automate your Minecraft Server!')
     parser.add_argument('--install', help='Install Minecraft Server', required=False, action='store_true')
-    parser.add_argument('--install_mod', help='Install Bukkit', required=False, action='store_true')
+    parser.add_argument('--install_mod', help='Install Bukkit <bukkit/spigotmc>', required=False)
     parser.add_argument('--start', help='Run Minecraft Server', required=False, action='store_true')
     parser.add_argument('--stop', help='Stop Minecraft Server', required=False, action='store_true')
     parser.add_argument('--restart', help='Restart Minecraft Server', required=False, action='store_true')

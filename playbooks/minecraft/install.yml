@@ -13,8 +13,8 @@
       dest: "{{app_dir}}/minecraft/server.properties"
       content: |
         server-port=3074
-        rcon.port=8080
-        query.port=3074
+        rcon.port=3075
+        query.port=3076
         rcon.password=Crafter9000
         enable-rcon=true
         level-name=world

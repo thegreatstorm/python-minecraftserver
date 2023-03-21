@@ -27,5 +27,6 @@
       dest: "{{app_dir}}/minecraft/server.jar"
       mode: '0750'
   - name: "Make sure you update your memory requirements {{app_dir}}/conf/minecraft.conf"
+    shell: echo "I'm just a comment"
 
 

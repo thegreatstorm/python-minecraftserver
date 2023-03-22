@@ -1,7 +1,6 @@
 #!/bin/bash
 # Minecraft 1.19.4 Automated Playbook
 # UBUNTU 22.04 - Run root or admin
-apt update -y
 dpkg --add-architecture i386; sudo apt update; sudo apt install ansible wget tar unzip openjdk-19-jdk python3-pip -y
 mkdir /opt/gameserver
 adduser gameadmin --disabled-password

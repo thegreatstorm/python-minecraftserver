@@ -34,7 +34,7 @@ def command(sock, text):
     return response
 
 
-def connect_mc_rcon(server_info):
+def send_mc_rcon(server_info):
         try:
             # Connect
             sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -53,3 +53,27 @@ def connect_mc_rcon(server_info):
             sock.close()
         finally:
             sock.close()
+
+
+def connect_mc_rcon(server_info):
+    try:
+        # Connect
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.connect((server_info['hostname'], int(server_info['rcon_port'])))
+        result = login(sock, server_info['rcon_password'])
+        if not result:
+            print("Incorrect rcon password")
+            return
+        while True:
+            if server_info['message'] == 'exit':
+                break
+            response = command(sock, server_info['message'])
+            conv_response = str(response)
+            conv_response = re.sub(r'\\\w{2}\d\w?', '', conv_response)
+            conv_response = re.sub(r'\\n', '', conv_response)
+            print(conv_response[2:][:-1])
+    except Exception as e:
+        print("Failed to Connect: " + str(e))
+        sock.close()
+    finally:
+        sock.close()

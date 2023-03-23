@@ -188,7 +188,6 @@ if args.rcon_connect:
                 server_info["rcon_port"] = args.rcon_port
                 server_info["rcon_password"] = args.rcon_password
                 server_info["enable_trace"] = False
-                print("Running Command: {}".format(args.rcon_command))
                 connect_mc_rcon(server_info)
             else:
                 print('Rcon Password empty. Use --rcon_password=""')

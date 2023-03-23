@@ -65,9 +65,10 @@ def connect_mc_rcon(server_info):
             print("Incorrect rcon password")
             return
         while True:
-            if server_info['message'] == 'exit':
+            message = input("Enter your value: ")
+            if message == 'exit':
                 break
-            response = command(sock, server_info['message'])
+            response = command(sock, message)
             conv_response = str(response)
             conv_response = re.sub(r'\\\w{2}\d\w?', '', conv_response)
             conv_response = re.sub(r'\\n', '', conv_response)

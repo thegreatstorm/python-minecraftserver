@@ -17,3 +17,5 @@
       var: spigot_results.output
   - name: "Changing SpigotMC Latest"
     shell: "mv {{app_dir}}/minecraft/spigot-* {{app_dir}}/minecraft/server.jar"
+  - name: "Start your minecraft server and you will see plugins folder {{app_dir}}/minecraft/plugins/minecraft.conf"
+    shell: echo "I'm just a comment"

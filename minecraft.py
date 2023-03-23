@@ -61,7 +61,7 @@ if args.start:
             exit(1)
     else:
         print("Minecraft Server not installed.")
-        exit(0)
+    exit(0)
 
 if args.restart:
     print("Restarting Minecraft Server")
@@ -77,7 +77,8 @@ if args.restart:
             exit(1)
     else:
         print("Minecraft Server not installed.")
-        exit(0)
+    exit(0)
+
 
 if args.install:
     print("Installing Minecraft Server: {}".format(current_game))
@@ -94,7 +95,7 @@ if args.install:
             exit(1)
     else:
         print("Minecraft not installed.")
-        exit(0)
+    exit(0)
 
 if args.install_mod:
     print("Installing Minecraft Server: {}".format(current_game))
@@ -131,6 +132,7 @@ if args.update:
     else:
         print("Minecraft not installed.")
         exit(1)
+    exit(0)
 
 
 if args.stop:
@@ -144,6 +146,7 @@ if args.stop:
     else:
         print("Minecraft not installed.")
         exit(1)
+    exit(0)
 
 if args.rcon:
     print("Connecting to Minecraft Server")
@@ -172,6 +175,7 @@ if args.rcon:
     else:
         print("Minecraft not installed.")
         exit(1)
+    exit(0)
 
 
 if args.clean:
@@ -194,6 +198,7 @@ if args.clean:
             print("Cleaned Settings")
     except OSError as error:
         print("Failed to Clean OSError: ".format(str(error)))
+    exit(0)
 
 
 if args.status:
@@ -203,8 +208,6 @@ if args.status:
         print("Server is running")
     else:
         print("Server is not running")
-
-if not args:
-    print("Type in --help")
+    exit(0)
 
 print("Type in --help")

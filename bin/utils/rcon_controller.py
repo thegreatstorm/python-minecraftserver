@@ -64,15 +64,15 @@ def connect_mc_rcon(server_info):
         if not result:
             print("Incorrect rcon password")
             return
+        print("Type in exit to escape rcon connection.")
         while True:
-            print("Type in exit to escape rcon connection.")
             message = input("")
             if message == 'exit':
                 break
             response = command(sock, message)
             conv_response = str(response)
             conv_response = re.sub(r'\\\w{2}\d\w?', '', conv_response)
-            conv_response = re.sub(r'\\n', '', conv_response)
+            conv_response = re.sub(r'\\n', '\n', conv_response)
             print(conv_response[2:][:-1])
     except Exception as e:
         print("Failed to Connect: " + str(e))

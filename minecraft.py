@@ -207,4 +207,4 @@ if args.status:
 if not args:
     print("Type in --help")
 
-print("")
+print("Type in --help")

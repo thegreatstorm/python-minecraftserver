@@ -65,6 +65,7 @@ def connect_mc_rcon(server_info):
             print("Incorrect rcon password")
             return
         while True:
+            print("Type in exit to escape rcon connection.")
             message = input("")
             if message == 'exit':
                 break

@@ -8,6 +8,7 @@ def argument_controller():
     parser.add_argument('--install_mod', help='Install Bukkit <bukkit/spigotmc>', required=False)
     parser.add_argument('--start', help='Run Minecraft Server', required=False, action='store_true')
     parser.add_argument('--stop', help='Stop Minecraft Server', required=False, action='store_true')
+    parser.add_argument('--status', help='Stop Minecraft Server', required=False, action='store_true')
     parser.add_argument('--restart', help='Restart Minecraft Server', required=False, action='store_true')
     parser.add_argument('--update', help='Update Minecraft Server', required=False, action='store_true')
     parser.add_argument('--clean', help='Destroys server folder', required=False, action='store_true')

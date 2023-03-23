@@ -204,4 +204,7 @@ if args.clean:
     else:
         print("Server is not running")
 
+if not args:
+    print("Type in --help")
+
 print("")

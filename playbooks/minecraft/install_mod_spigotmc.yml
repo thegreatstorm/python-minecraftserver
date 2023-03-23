@@ -13,7 +13,7 @@
   - name: "Installing SpigotMC Latest"
     shell: "cd {{app_dir}}/minecraft/ && java -jar BuildTools.jar"
     register: spigot_results
-  - name: "Changing SpigotMC Latest"
-    shell: "mv {{app_dir}}/minecraft/spigot-* server.jar"
   - debug:
       var: spigot_results.output
+  - name: "Changing SpigotMC Latest"
+    shell: "mv {{app_dir}}/minecraft/spigot-* server.jar"

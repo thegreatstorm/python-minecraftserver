@@ -196,4 +196,12 @@ if args.clean:
         print("Failed to Clean OSError: ".format(str(error)))
 
 
+if args.clean:
+    print("Checking if PID running")
+    print("--------------------------------------------------------")
+    if find_process('server.jar'):
+        print("Server is running")
+    else:
+        print("Server is not running")
+
 print("")

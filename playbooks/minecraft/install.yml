@@ -1,6 +1,8 @@
 ---
 - hosts: localhost
   tasks:
+  - name: "Installing minecraft 1.19.3"
+    shell: echo "I'm just a comment"
   - name: "Making directory"
     shell: "mkdir -p {{app_dir}}/logs {{app_dir}}/minecraft"
   - name: "Create eula.txt"
@@ -22,7 +24,7 @@
         max-players=10
   - name: "Downloading minecraft"
     get_url:
-      url: https://piston-data.mojang.com/v1/objects/8f3112a1049751cc472ec13e397eade5336ca7ae/server.jar
+      url: https://piston-data.mojang.com/v1/objects/c9df48efed58511cdd0213c56b9013a7b5c9ac1f/server.jar
       dest: "{{app_dir}}/minecraft/server.jar"
       mode: '0750'
   - name: "Make sure you update your memory requirements {{app_dir}}/conf/minecraft.conf"

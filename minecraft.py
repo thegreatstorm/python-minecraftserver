@@ -8,7 +8,7 @@ import json
 
 # Custom Code
 from bin.utils.argument_controller import argument_controller
-from bin.utils.configuration_controller import config_controller, set_game_config, get_game_config
+from bin.utils.configuration_controller import config_controller, set_game_config, get_game_config, read_minecraft_properties
 from bin.utils.rcon_controller import connect_mc_rcon, send_mc_rcon
 from bin.server_manager import run_playbook
 from bin.server_manager import find_process
@@ -180,6 +180,9 @@ if args.rcon_send:
 if args.rcon_connect:
     print("Connecting to Minecraft Server")
     print("--------------------------------------------------------")
+    print("Getting server properties")
+    server_settings = read_minecraft_properties(script_dir)
+    print(server_settings)
     if game_installed != 'unset':
         if args.rcon_port:
             if args.rcon_password:

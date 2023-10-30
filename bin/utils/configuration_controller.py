@@ -2,6 +2,14 @@ import os
 import configparser
 
 
+def read_minecraft_properties(script_dir):
+    config = configparser.RawConfigParser()
+    prefix_dir = os.path.abspath(os.path.join(script_dir))
+    properties_settings = config_controller(prefix_dir, "server/minecraft/server.properties.conf")
+    config.read(properties_settings)
+    return config
+
+
 def config_controller(script_dir, default, local):
 
     config = configparser.RawConfigParser()

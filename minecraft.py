@@ -151,26 +151,20 @@ if args.stop:
 if args.rcon_send:
     print("Sending command to Minecraft Server")
     print("--------------------------------------------------------")
+    print("Getting server properties")
+    server_settings = read_minecraft_properties(script_dir)
     if game_installed != 'unset':
-        if args.rcon_port:
-            if args.rcon_password:
-                if args.rcon_command:
-                    server_info = {}
-                    server_info["hostname"] = "0.0.0.0"
-                    server_info["rcon_port"] = args.rcon_port
-                    server_info["rcon_password"] = args.rcon_password
-                    server_info["message"] = args.rcon_command
-                    server_info["enable_trace"] = False
-                    print("Running Command: {}".format(args.rcon_command))
-                    send_mc_rcon(server_info)
-                else:
-                    print('Command empty. Use --command=""')
-                    exit(1)
-            else:
-                print('Rcon Password empty. Use --rcon_password=""')
-                exit(1)
+        if args.rcon_command:
+            server_info = {}
+            server_info["hostname"] = "0.0.0.0"
+            server_info["rcon_port"] = server_settings.get("rcon.port").data
+            server_info["rcon_password"] = server_settings.get("rcon.password").data
+            server_info["message"] = args.rcon_command
+            server_info["enable_trace"] = False
+            print("Running Command: {}".format(args.rcon_command))
+            send_mc_rcon(server_info)
         else:
-            print('Rcon Port empty. Use --rcon_port=""')
+            print('Command empty. Use --command=""')
             exit(1)
     else:
         print("Minecraft not installed.")
@@ -182,27 +176,17 @@ if args.rcon_connect:
     print("--------------------------------------------------------")
     print("Getting server properties")
     server_settings = read_minecraft_properties(script_dir)
-    print(server_settings)
     if game_installed != 'unset':
-        if args.rcon_port:
-            if args.rcon_password:
-                server_info = {}
-                server_info["hostname"] = "0.0.0.0"
-                server_info["rcon_port"] = args.rcon_port
-                server_info["rcon_password"] = args.rcon_password
-                server_info["enable_trace"] = False
-                connect_mc_rcon(server_info)
-            else:
-                print('Rcon Password empty. Use --rcon_password=""')
-                exit(1)
-        else:
-            print('Rcon Port empty. Use --rcon_port=""')
-            exit(1)
+        server_info = {}
+        server_info["hostname"] = "0.0.0.0"
+        server_info["rcon_port"] = server_settings.get("rcon.port").data
+        server_info["rcon_password"] = server_settings.get("rcon.password").data
+        server_info["enable_trace"] = False
+        connect_mc_rcon(server_info)
     else:
         print("Minecraft not installed.")
         exit(1)
     exit(0)
-
 
 if args.clean:
     print("Cleaning Server Directory")

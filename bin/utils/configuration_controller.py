@@ -1,13 +1,15 @@
 import os
 import configparser
+from jproperties import Properties
 
 
 def read_minecraft_properties(script_dir):
-    config = configparser.RawConfigParser()
     prefix_dir = os.path.abspath(os.path.join(script_dir))
-    properties_settings = config_controller(prefix_dir, "server/minecraft/server.properties.conf")
-    config.read(properties_settings)
-    return config
+    properties_settings = os.path.abspath(os.path.join(prefix_dir, "server/minecraft/server.properties"))
+    configs = Properties()
+    with open(properties_settings, 'rb') as config_file:
+        configs.load(config_file)
+    return configs
 
 
 def config_controller(script_dir, default, local):

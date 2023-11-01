@@ -148,7 +148,7 @@ if args.stop:
         exit(1)
     exit(0)
 
-if args.rcon_send:
+if args.send:
     print("Sending command to Minecraft Server")
     print("--------------------------------------------------------")
     print("Getting server properties")
@@ -171,7 +171,7 @@ if args.rcon_send:
         exit(1)
     exit(0)
 
-if args.rcon_connect:
+if args.connect:
     print("Connecting to Minecraft Server")
     print("--------------------------------------------------------")
     print("Getting server properties")

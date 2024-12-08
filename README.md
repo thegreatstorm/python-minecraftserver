@@ -1,8 +1,12 @@
 <img src="https://www.logaster.com/blog/wp-content/uploads/2020/06/image14-3.png" alt="My cool logo"/>
 
+### Supported Version of Minecraft: 1.21.4
+
 # python-minecraft
 Minecraft Server Automation!
 By: TheGreatSt0rm
+
+
 
 ## Prerequisites
 * Ubuntu 64-bit

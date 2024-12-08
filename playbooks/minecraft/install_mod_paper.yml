@@ -5,7 +5,7 @@
     shell: "mv {{app_dir}}/minecraft/server.jar {{app_dir}}/minecraft/server.jar.old"
   - name: "Downloading Paper Latest"
     get_url:
-      url: https://api.papermc.io/v2/projects/paper/versions/latest/builds/81/downloads/paper-1.21.3-81.jar
+      url: https://api.papermc.io/v2/projects/paper/versions/1.21.3/builds/81/downloads/paper-1.21.3-81.jar
       dest: "{{app_dir}}/minecraft/paper.jar"
       mode: '0750'
   - name: "Installing Paper Latest"

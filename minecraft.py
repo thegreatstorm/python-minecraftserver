@@ -102,10 +102,10 @@ if args.install_mod:
     print("--------------------------------------------------------")
     if game_installed != 'unset':
         playbook_name = ""
-        if args.install_mod == "spigotmc":
-            playbook_name = "install_mod_spigotmc.yml"
+        if args.install_mod == "paper":
+            playbook_name = "install_mod_paper.yml"
         else:
-            print('You forgot to add --install_mod="spigotmc"')
+            print('You forgot to add --install_mod="paper"')
             exit(1)
         playbook = os.path.abspath(os.path.join(prefix_dir, "playbooks/{}/{}".format(current_game, playbook_name)))
         try:
